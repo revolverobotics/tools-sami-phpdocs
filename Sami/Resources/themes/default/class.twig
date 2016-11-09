@@ -70,23 +70,6 @@
 
 {% endblock %}
 
-{% block class_signature -%}
-    {% if not class.interface and class.abstract %}abstract {% endif %}
-    {{ class.categoryName|raw }}
-    <strong>{{ class.shortname|raw }}</strong>
-    {%- if class.parent %}
-        extends {{ class_link(class.parent) }}
-    {%- endif %}
-    {%- if class.interfaces|length > 0 %}
-        implements
-        {% for interface in class.interfaces %}
-            {{- class_link(interface) }}
-            {%- if not loop.last %}, {% endif %}
-        {%- endfor %}
-    {%- endif %}
-    {{- source_link(project, class) }}
-{% endblock %}
-
 {% block method_signature -%}
     {% if method.final %}final{% endif %}
     {% if method.abstract %}abstract{% endif %}
